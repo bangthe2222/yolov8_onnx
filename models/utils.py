@@ -1,10 +1,6 @@
 import numpy as np
 import cv2
 
-
-
-
-
 def nms(boxes, scores, iou_threshold):
     # Sort by score
     sorted_indices = np.argsort(scores)[::-1]

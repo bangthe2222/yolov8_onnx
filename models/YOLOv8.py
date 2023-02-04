@@ -3,11 +3,7 @@ import cv2
 import numpy as np
 import onnxruntime
 import os
-from utils import xywh2xyxy, nms, draw_detections
-
-print(np.__version__)
-print(cv2.__version__)
-print(onnxruntime.__version__)
+from .utils import xywh2xyxy, nms, draw_detections
 
 class YOLOv8:
 
@@ -117,7 +113,6 @@ class YOLOv8:
     def get_input_details(self):
         model_inputs = self.session.get_inputs()
         self.input_names = [model_inputs[i].name for i in range(len(model_inputs))]
-
         self.input_shape = model_inputs[0].shape
         self.input_height = self.input_shape[2]
         self.input_width = self.input_shape[3]
@@ -137,7 +132,6 @@ if __name__ == '__main__':
                             iou_thres=0.5
                             )
 
-    
     path = r"C:\Users\PC\Documents\HCMUT K21\EduBin\DEMO_DAY\CODE\Yolov8onnx\test\images\\"
     for file in os.listdir(path=path):
 
