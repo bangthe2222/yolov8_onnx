@@ -3,10 +3,12 @@ import cv2
 import numpy as np
 import onnxruntime
 import os
-from .utils import xywh2xyxy, nms, draw_detections
+from models.utils import xywh2xyxy, nms, draw_detections
 
 class YOLOv8:
-
+    """
+        yolov8 onnx model detector
+    """
     def __init__(self, path,class_names = ["bottle", "milo", "redbull"], conf_thres=0.7, iou_thres=0.5):
         self.conf_threshold = conf_thres
         self.iou_threshold = iou_thres

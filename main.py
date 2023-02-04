@@ -8,11 +8,11 @@ if __name__ == '__main__':
     # Initialize YOLOv8 object detector
     yolov8_detector = YOLOv8(model_path,  # path to onnx model 
                             class_names= class_names, # class names
-                            conf_thres=0.5, 
-                            iou_thres=0.5
+                            conf_thres=0.5, # confidence threshold
+                            iou_thres=0.5   # iou threshold 
                             )
 
-    path = r"C:\Users\PC\Documents\HCMUT K21\EduBin\DEMO_DAY\CODE\Yolov8onnx\test\images\\"
+    path = "./test/images/"
     for file in os.listdir(path=path):
 
         img = cv2.imread(path + file)
