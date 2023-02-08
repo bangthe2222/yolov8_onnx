@@ -20,8 +20,8 @@ class YOLOv8:
         rng = np.random.default_rng(3)
         self.colors = rng.uniform(0, 255, size=(len(class_names), 3))
 
-    def __call__(self, image):
-        return self.detect_objects(image)
+    # def __call__(self, image):
+    #     return self.detect_objects(image)
 
     def initialize_model(self, path):
         self.session = onnxruntime.InferenceSession(path,
@@ -122,7 +122,14 @@ class YOLOv8:
     def get_output_details(self):
         model_outputs = self.session.get_outputs()
         self.output_names = [model_outputs[i].name for i in range(len(model_outputs))]
-
+    def getIdObject(self):
+        id_out = None
+        ID_list = [1,2,0]
+        if len(self.class_ids):
+            id_out = ID_list[self.class_ids[0]]
+            return id_out
+        else:
+            return None
 
 if __name__ == '__main__':
     model_path = "./EduBinYolov8_3_2_2023.onnx"
